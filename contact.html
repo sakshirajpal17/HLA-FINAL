@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+      
+       
+    <div class="wrapper">
+        <h2> CONTACT US </h2>
+        <div id="errormessage"></div>
+        <form id="myform" onsubmit="return validate()">
+            <div class="input_field">
+                <input type="text" placeholder="First Name" id="fname">
+            </div>
+            <div class="input_field">
+                <input type="text" placeholder="Last Name" id="lname">
+            </div>
+            <div class="input_field">
+                <input type="text" placeholder="Phone" id="phone">
+            </div>
+            <div class="input_field">
+                <input type="text" placeholder="Email" id="email">
+            </div>
+            <div class="input_field">
+                <textarea  id="message" placeholder="Message" cols="30" rows="10"></textarea>
+            </div>
+            <div class="btn">
+                <input type="submit" >
+            </div>  
+        </form>    
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAshIdiUPxklSCjCeBBm7sDeL3WaHeKhdo",
+          authDomain: "hla-website-33b54.firebaseapp.com",
+          projectId: "hla-website-33b54",
+          storageBucket: "hla-website-33b54.appspot.com",
+          messagingSenderId: "54981207480",
+          appId: "1:54981207480:web:a84983007069f61f85db4d"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        import{getDatabase, ref, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js";
+        
+        const db= getDatabase();
+
+        var fname = document.getElementById("fname").value;
+        var lname = document.getElementById("lname").value;
+        var phone = document.getElementById("phone").value;
+        var email = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+        var errormessage = document.getElementById("errormessage");
+
+        function insertdata(){
+            set(ref(db,"thecontactinfo/" + phone.value ),{
+                firstname: fname.value,
+                lastname: lname.value,
+                phonenum: phone.value,
+                emailid: email.value,
+                msg: message.value 
+            }
+            .then(()=>{
+                alert ("DATA STORED");
+
+            })
+            .catch((error=>{
+                alert("unsuccesfull, error" +error);
+            }))
+        };
+
+
+      </script>
+</body>
+</html>

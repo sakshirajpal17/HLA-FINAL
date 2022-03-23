@@ -1,0 +1,29 @@
+h1{
+    margin-left: 13rem;
+}
+img{
+    margin-left: 13rem;
+    width: 35rem;
+    height: 35rem;
+}
+h3{
+    margin-left: 13rem;
+}
+p{
+    width: 35rem;
+    margin-left: 13rem;
+    font-size: 1.2rem;
+}
+hr{
+    width: 60%;
+    margin-left: 12rem;
+}
+div{    
+  border: 1px black solid;
+  width: 60rem;
+  height: 90%;
+  margin-left: 15rem;
+
+    
+
+}
